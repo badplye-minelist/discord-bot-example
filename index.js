@@ -13,7 +13,7 @@ fs.readdir("./events/", (err, files) => {
 
 client.on('message', message => {
 
-    if (message.content === '?help') {
+    if (message.content === '!help') {
 
        message.channel.send({embed: {
     color: 0xFF8C8C,
@@ -22,7 +22,7 @@ client.on('message', message => {
       icon_url: client.user.avatarURL
     },
     title: "Help Menu",
-    description: "The current bot prefix is **?**\n--------------------",
+    description: "The current bot prefix is **!**\n--------------------",
     fields: [{
         name: "Help",
         value: "Shows a list of commands."
