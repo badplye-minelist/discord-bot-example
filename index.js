@@ -11,4 +11,37 @@ fs.readdir("./events/", (err, files) => {
   });
 });
 
+client.on('message', message => {
+
+    if (message.content === '?help') {
+
+       message.channel.send({embed: {
+    color: 0xFF8C8C,
+    author: {
+      name: client.user.username,
+      icon_url: client.user.avatarURL
+    },
+    title: "Help Menu",
+    description: "The current bot prefix is **?**\n--------------------",
+    fields: [{
+        name: "Help",
+        value: "Shows a list of commands."
+      },
+      {
+        name: "Additional Features",
+        value: "There are countless features we are working to add!"
+      }
+    ],
+    timestamp: new Date(),
+    footer: {
+      icon_url: client.user.avatarURL,
+      text: "Scouting since 1910!"
+    }
+  }
+});
+
+       }
+
+});
+
 client.login(process.env.BOT_TOKEN);
