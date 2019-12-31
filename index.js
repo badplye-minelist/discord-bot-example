@@ -74,7 +74,7 @@ client.on('message', message => {
       },
       {
         name: "Sources",
-        value: "[Wikipedia](https://en.wikipedia.org/wiki/Robert_Baden-Powell,_1st_Baron_Baden-Powell), ["
+        value: "[Wikipedia](https://en.wikipedia.org/wiki/Robert_Baden-Powell,_1st_Baron_Baden-Powell), [OA-BSA](https://history.oa-bsa.org/node/3018)"
       }
     ],
     timestamp: new Date(),
