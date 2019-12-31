@@ -52,9 +52,9 @@ client.on('message', message => {
 
 client.on('message', message => {
 
-    if (message.content === '!ping') {
+    if (message.content === '!bp') {
 
-       message.channel.send({embed});
+       message.channel.send({bpe});
 
        }
 
