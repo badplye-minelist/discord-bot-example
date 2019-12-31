@@ -1,7 +1,7 @@
 require("dotenv").config();
 const Discord = require("discord.js");
 const fs = require("fs");
-const bpe = new Discord.RichEmbed()
+const embed = new Discord.RichEmbed()
   .setTitle("This is your title, it can hold 256 characters")
   .setAuthor("Author Name", "https://i.imgur.com/lm8s41J.png")
   /*
@@ -28,6 +28,8 @@ const bpe = new Discord.RichEmbed()
    */
   .addBlankField(true)
   .addField("Inline Field 3", "You can have a maximum of 25 fields.", true);
+ 
+  message.channel.send({embed});
 
 const client = new Discord.Client();
 
@@ -54,7 +56,7 @@ client.on('message', message => {
 
     if (message.content === '!bp') {
 
-       message.channel.send({bpe});
+      message.channel.send({embed});
 
        }
 
