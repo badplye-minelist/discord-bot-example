@@ -74,7 +74,7 @@ client.on('message', message => {
     // Otherwise, if no user was mentioned
       message.channel.send({embed: {
   color: 3447003,
-  description: "Who are you trying to kick? You must mention a member!"
+  description: "Who are you trying to ban? You must mention a member!"
 }});
     }
   } else {
