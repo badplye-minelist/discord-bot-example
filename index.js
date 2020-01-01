@@ -48,22 +48,34 @@ client.on('message', message => {
           reason: 'They were bad!',
         }).then(() => {
           // We let the message author know we were able to ban the person
-          message.reply(`Successfully banned ${user.tag}`);
-        }).catch(err => {
+          message.channel.send({embed: {
+  color: 3447003,
+  description: "User has been kicked"
+}})})
+            .catch(err => {
           // An error happened
           // This is generally due to the bot not being able to ban the member,
           // either due to missing permissions or role hierarchy
-          message.reply('I was unable to ban the member');
+          message.channel.send({embed: {
+  color: 3447003,
+  description: "I was unable to ban that user"
+}});
           // Log the error
           console.error(err);
         });
       } else {
         // The mentioned user isn't in this guild
-        message.reply('That user isn\'t in this guild!');
+        message.channel.send({embed: {
+  color: 3447003,
+  description: "That user isn\'t in this guild"
+}});
       }
     } else {
     // Otherwise, if no user was mentioned
-      message.reply('You didn\'t mention the user to ban!');
+      message.channel.send({embed: {
+  color: 3447003,
+  description: "Who are you trying to kick? You must mention a member!"
+}});
     }
   } else {
   message.channel.send({embed: {
