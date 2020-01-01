@@ -19,7 +19,7 @@ module.exports = message => {
     .kick()
     .then(() => message.channel.send({embed: {
   color: 3447003,
-  description: "${member.user.tag} was kicked."
+  description: "User has been kicked"
 }}))
     .catch(error => message.channel.send({embed: {
   color: 3447003,
