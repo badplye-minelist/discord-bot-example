@@ -11,13 +11,10 @@ module.exports = (client, message) => {
     fields: [{
         name: "No Permission",
         value: "You need to be a Moderator to execute this command"
-      },
-      {
-        name: "Additional Features",
-        value: "There are countless features we are working to add!"
       }
     ],
   }
+                         }
 });
   }
 };
