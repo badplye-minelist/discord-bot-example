@@ -12,21 +12,36 @@ fs.readdir("./events/", (err, files) => {
   });
 });
 
-client.on('message', message => {
-
-    if (message.content === '!ping') {
-
-       message.reply('pong');
-
-       }
-
+bot.on('guildCreate', (guild) => { // If the Bot was added on a server, proceed
+    if (!guildConf[guild.id]) { // If the guild's id is not on the GUILDCONF File, proceed
+	guildConf[guild.id] = {
+		prefix: config.prefix
+	}
+    }
+     fs.writeFile('./storages/guildConf.json', JSON.stringify(guildConf, null, 2), (err) => {
+     	if (err) console.log(err)
+	})
 });
 
-client.on('message', message => {
 
-    if (message.content === '!bp') {
+bot.on('guildDelete', (guild) => { // If the Bot was removed on a server, proceed
+     delete guildConf[guild.id]; // Deletes the Guild ID and Prefix
+     fs.writeFile('./storages/guildConf.json', JSON.stringify(guildConf, null, 2), (err) => {
+     	if (err) console.log(err)
+	})
+});
 
-      message.channel.send({embed: {
+
+bot.on('message', (message) => {
+    if (message.channel.type === "dm" || message.author.bot || message.author === bot.user) return; // Checks if we're on DMs, or the Author is a Bot, or the Author is our Bot, stop.
+    var args = message.content.split(' ').slice(1); // We need this later
+    var command = message.content.split(' ')[0].replace(guildConf[message.guild.id].prefix, ''); // Replaces the Current Prefix with this
+
+    if (command === "ping") { // If your command is <prefix>ping, proceed
+	message.channel.send('pong!') // Reply pong!
+    } else
+    if (command === "bp") { // If your command is <prefix>ping, proceed
+	message.channel.send({embed: {
     color: 3447003,
     author: {
       name: client.user.username,
@@ -53,10 +68,17 @@ client.on('message', message => {
       text: "Scouting since 1910!"
     }
   }
-});
-
-       }
-
+}); // Reply pong!
+    } else
+    if (command === "prefix") {
+	guildConf[message.guild.id].prefix = args[0];
+	if (!guildConf[message.guild.id].prefix) {
+		guildConf[message.guild.id].prefix = config.prefix; // If you didn't specify a Prefix, set the Prefix to the Default Prefix
+	}
+     fs.writeFile('./storages/guildConf.json', JSON.stringify(guildConf, null, 2), (err) => {
+     	if (err) console.log(err)
+	})
+  }
 });
 
 client.on('message', message => {
