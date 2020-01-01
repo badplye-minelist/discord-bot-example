@@ -14,7 +14,7 @@ fs.readdir("./events/", (err, files) => {
 
 client.on('message', message => {
 
-    if (message.content === '!ping') {
+    if (message.content === 'a!ping') {
 
        message.reply('pong');
 
@@ -24,7 +24,7 @@ client.on('message', message => {
 
 client.on('message', message => {
 
-    if (message.content === '!bp') {
+    if (message.content === 'a!bp') {
 
       message.channel.send({embed: {
     color: 3447003,
@@ -61,7 +61,7 @@ client.on('message', message => {
 
 client.on('message', message => {
 
-    if (message.content === '!help') {
+    if (message.content === 'a!help') {
 
        message.channel.send({embed: {
     color: 0xFF8C8C,
@@ -70,7 +70,7 @@ client.on('message', message => {
       icon_url: client.user.avatarURL
     },
     title: "Help Menu",
-    description: "The current bot prefix is **!**\n--------------------",
+    description: "The current bot prefix is **a!**\n--------------------",
     fields: [{
         name: "Help",
         value: "Shows a list of commands."
