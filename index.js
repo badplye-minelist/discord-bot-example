@@ -26,7 +26,8 @@ client.on('message', message => {
   if (!message.guild) return;
 
   // if the message content starts with "!ban"
-  if (message.content.startsWith('a!ban')) && (member.roles.some(role => role.name === 'Mod')) {
+  if (message.content.startsWith('a!ban')) {
+    if(message.member.roles.some(r=>["Dev", "Mod", "Server Staff", "Proficient"].includes(r.name)) ) {
     // Assuming we mention someone in the message, this will return the user
     // Read more about mentions over at https://discord.js.org/#/docs/main/master/class/MessageMentions
     const user = message.mentions.users.first();
@@ -64,6 +65,7 @@ client.on('message', message => {
     // Otherwise, if no user was mentioned
       message.reply('You didn\'t mention the user to ban!');
     }
+  }
   }
 });
 
