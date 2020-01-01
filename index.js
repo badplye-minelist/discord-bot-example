@@ -65,9 +65,16 @@ client.on('message', message => {
     // Otherwise, if no user was mentioned
       message.reply('You didn\'t mention the user to ban!');
     }
+  } else {
+  message.channel.send({embed: {
+  color: 3447003,
+  description: "You do not have permission to execute this command!"
+}});
   }
   }
 });
+
+
 
 client.on('message', message => {
 
