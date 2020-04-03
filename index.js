@@ -44,6 +44,9 @@ client.on('message', message => {
          * Read more about what ban options there are over at
          * https://discord.js.org/#/docs/main/master/class/GuildMember?scrollTo=ban
          */
+        member.send(
+          `You have been banned from the server`
+        );
         member.ban({
           reason: 'They were bad!',
         }).then(() => {
