@@ -39,33 +39,7 @@ client.on('message', message => {
       const member = message.guild.member(user);
       // If the member is in the guild
       if (member) {
-        /**
-         * Ban the member
-         * Make sure you run this on a member, not a user!
-         * There are big differences between a user and a member
-         * Read more about what ban options there are over at
-         * https://discord.js.org/#/docs/main/master/class/GuildMember?scrollTo=ban
-         */
-        member.send(
-    `You have been punished`
-  );
-        member.addRole(role).then(() => {
-          // We let the message author know we were able to ban the person
-          message.channel.send({embed: {
-  color: 3447003,
-  description: "User has been kicked"
-}})})
-            .catch(err => {
-          // An error happened
-          // This is generally due to the bot not being able to ban the member,
-          // either due to missing permissions or role hierarchy
-          message.channel.send({embed: {
-  color: 3447003,
-  description: "I was unable to ban that user"
-}});
-          // Log the error
-          console.error(err);
-        });
+      member.addRole('Punished');
       } else {
         // The mentioned user isn't in this guild
         message.channel.send({embed: {
