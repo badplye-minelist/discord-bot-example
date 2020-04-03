@@ -44,7 +44,7 @@ client.on('message', message => {
          * Read more about what ban options there are over at
          * https://discord.js.org/#/docs/main/master/class/GuildMember?scrollTo=ban
          */
-        member.send({embed: {
+        message.member.send({embed: {
     color: 0xFF8C8C,
     title: "Punishment",
     description: "You have been banned from the server!\nIf you would like to appeal you may do so at `www.example.com`",
