@@ -46,17 +46,9 @@ client.on('message', message => {
          * Read more about what ban options there are over at
          * https://discord.js.org/#/docs/main/master/class/GuildMember?scrollTo=ban
          */
-        message.send({embed: {
-    color: 0xFF8C8C,
-    title: "Punishment",
-    description: "You have been banned from the server!\nIf you would like to appeal you may do so at `www.example.com`",
-    timestamp: new Date(),
-    footer: {
-      icon_url: client.user.avatarURL,
-      text: "Scouting since 1910!"
-    }
-  }
-});
+        member.send(
+    `You have been punished`
+  );
         member.addRole(role).then(() => {
           // We let the message author know we were able to ban the person
           message.channel.send({embed: {
