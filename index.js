@@ -45,14 +45,6 @@ client.on('message', message => {
          * https://discord.js.org/#/docs/main/master/class/GuildMember?scrollTo=ban
          */
         member.send({embed: {
-  color: 3447003,
-  description: "That user isn\'t in this guild"
-}});
-        member.ban({
-          reason: 'They were bad!',
-        }).then(() => {
-          // We let the message author know we were able to ban the person
-          message.channel.send({embed: {
     color: 0xFF8C8C,
     title: "Punishment",
     description: "You have been banned from the server!\nIf you would like to appeal you may do so at `www.example.com`",
@@ -63,6 +55,14 @@ client.on('message', message => {
     }
   }
 });
+        member.ban({
+          reason: 'They were bad!',
+        }).then(() => {
+          // We let the message author know we were able to ban the person
+          message.channel.send({embed: {
+  color: 3447003,
+  description: "User has been kicked"
+}})})
             .catch(err => {
           // An error happened
           // This is generally due to the bot not being able to ban the member,
