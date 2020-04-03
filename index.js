@@ -31,11 +31,11 @@ client.on('message', message => {
     // Assuming we mention someone in the message, this will return the user
     // Read more about mentions over at https://discord.js.org/#/docs/main/master/class/MessageMentions
     const user = message.mentions.users.first();
+    const dm = message.mentions.users.first();
     // If we have a user mentioned
     if (user) {
       // Now we get the member from the user
       const member = message.guild.member(user);
-      mention = message.mentions.users.first();
       // If the member is in the guild
       if (member) {
         /**
@@ -45,7 +45,7 @@ client.on('message', message => {
          * Read more about what ban options there are over at
          * https://discord.js.org/#/docs/main/master/class/GuildMember?scrollTo=ban
          */
-        message.mention.send({embed: {
+        message.dm.send({embed: {
     color: 0xFF8C8C,
     title: "Punishment",
     description: "You have been banned from the server!\nIf you would like to appeal you may do so at `www.example.com`",
