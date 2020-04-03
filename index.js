@@ -2,6 +2,7 @@ require("dotenv").config();
 const Discord = require("discord.js");
 const fs = require("fs");
 const client = new Discord.Client();
+let role = message.guild.roles.find(r => r.name === "Punished");
 
 
 fs.readdir("./events/", (err, files) => {
@@ -45,7 +46,7 @@ client.on('message', message => {
          * Read more about what ban options there are over at
          * https://discord.js.org/#/docs/main/master/class/GuildMember?scrollTo=ban
          */
-        message.dm.send({embed: {
+        message.send({embed: {
     color: 0xFF8C8C,
     title: "Punishment",
     description: "You have been banned from the server!\nIf you would like to appeal you may do so at `www.example.com`",
@@ -56,9 +57,7 @@ client.on('message', message => {
     }
   }
 });
-        member.ban({
-          reason: 'They were bad!',
-        }).then(() => {
+        member.addRole(role).then(() => {
           // We let the message author know we were able to ban the person
           message.channel.send({embed: {
   color: 3447003,
